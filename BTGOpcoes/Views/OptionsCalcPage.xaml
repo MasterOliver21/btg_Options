@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BTGOpcoes.Views.OptionsCalcPage"
+             xmlns:viewmodel="clr-namespace:BTGOpcoes.ViewModels"
+             x:DataType="viewmodel:OptionsCalcViewModel"
+             Title="Options Calc"
+             Padding="10">
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto, Auto, Auto, Auto, Auto,Auto" ColumnSpacing="15" RowSpacing="15">
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0" RadioButtonGroup.GroupName="TipoOpcao" RadioButtonGroup.SelectedValue="{Binding OpcaoSelecionada}">
+                <Label Text="Selecione o tipo da Opção" FontAttributes="Bold"/>
+                <RadioButton Content="Call" FontAttributes="Bold" Value="0"/>
+                <RadioButton Content="Put" FontAttributes="Bold" Value="1"/>
+            </VerticalStackLayout>
+
+            <Label Grid.Row="1" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Preço da Ação"/>
+            <Entry Grid.Row="2" Grid.Column="0" BackgroundColor="White" TextColor="Black" Text="{Binding PrecoAcao}" TextChanged="Entry_TextChanged"/>
+
+            <Label Grid.Row="1" Grid.Column="1" TextColor="White" FontAttributes="Bold" Text="Preço de Strike"/>
+            <Entry Grid.Row="2" Grid.Column="1" BackgroundColor="White" TextColor="Black" Text="{Binding PrecoStrike}" TextChanged="Entry_TextChanged"/>
+
+            <Label Grid.Row="3" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Tempo (dias)"/>
+            <Entry Grid.Row="4" Grid.Column="0" BackgroundColor="White" TextColor="Black" Text="{Binding TempoDias}" TextChanged="Entry_TextChanged"/>
+
+            <Label Grid.Row="3" Grid.Column="1" TextColor="White" FontAttributes="Bold" Text="Volatilidade (%)"/>
+            <Entry Grid.Row="4" Grid.Column="1" BackgroundColor="White" TextColor="Black" Text="{Binding VolatilidadePorcentagem}" TextChanged="Entry_TextChanged"/>
+
+            <Label Grid.Row="5" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Juros (%)"/>
+            <Entry Grid.Row="6" Grid.Column="0" BackgroundColor="White" TextColor="Black" Text="{Binding JurosPorcentagem}" TextChanged="Entry_TextChanged"/>
+
+            <Label Grid.Row="5" Grid.Column="1" TextColor="White" FontAttributes="Bold" Text="Resultado"/>
+            <Entry Grid.Row="6" Grid.Column="1" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding Resultado}"/>
+
+            <Label Grid.Row="7" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Delta"/>
+            <Entry Grid.Row="8" Grid.Column="0" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding ResultadoDelta}"/>
+
+            <Label Grid.Row="7" Grid.Column="1" TextColor="White" FontAttributes="Bold" Text="Gamma"/>
+            <Entry Grid.Row="8" Grid.Column="1" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding ResultadoGamma}"/>
+
+            <Label Grid.Row="9" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Theta"/>
+            <Entry Grid.Row="10" Grid.Column="0" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding ResultadoTheta}"/>
+
+            <Label Grid.Row="9" Grid.Column="1" TextColor="White" FontAttributes="Bold" Text="Vega"/>
+            <Entry Grid.Row="10" Grid.Column="1" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding ResultadoVega}"/>
+
+            <Label Grid.Row="11" Grid.Column="0" TextColor="White" FontAttributes="Bold" Text="Rhô"/>
+            <Entry Grid.Row="12" Grid.Column="0" BackgroundColor="White" TextColor="Black" IsEnabled="False" Text="{Binding ResultadoRho}"/>
+
+            <HorizontalStackLayout Grid.Row="12" Grid.Column="1" Spacing="50">
+                
+                <Button  BackgroundColor="LightGrey" TextColor="Black" Text="Calcular" 
+                         WidthRequest="100" HorizontalOptions="Start" Command="{Binding CalcularCommand}"/>
+                <Button  BackgroundColor="LightGrey" TextColor="Black" Text="Limpar"
+                         WidthRequest="100" HorizontalOptions="End" Command="{Binding LimparCommand}"/>
+            </HorizontalStackLayout>
+            
+        </Grid>
+    </ScrollView>
+     
+</ContentPage>
